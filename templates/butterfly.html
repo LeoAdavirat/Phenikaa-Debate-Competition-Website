@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Butterfly</title>
+    <style>
+      body {
+        background-image: url("garden_background.jpg");
+        background-size: cover;
+      }
+      .butterfly {
+        position: absolute;
+        top: {{ random_y }}px;
+        left: {{ random_x }}px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="butterfly_sprite.png" class="butterfly">
+    <script>
+      setTimeout(function() {
+        document.querySelector(".butterfly").remove();
+      }, 10000);
+    </script>
+  </body>
+</html>
