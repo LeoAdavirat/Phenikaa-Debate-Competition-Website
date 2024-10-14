@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 import socket, random
 
 app = Flask(__name__)
@@ -21,7 +21,8 @@ app = Flask(__name__)
 #     #     return "Invalid stage number"
 
 def add_butterfly(html_content):
-    butterfly_html = '<img src="{{ url_for("static", filename="images/butterfly_sprite.png") }}" style="position: absolute; left: {}px; top: {}px;">'.format(random.randint(0, 800), random.randint(0, 600))
+    butterfly_url = url_for('static', filename='images/buttefly.gif')
+    butterfly_html = '<img src="{}" style="position: absolute; left: {}px; top: {}px;">'.format(butterfly_url, random.randint(0, 800), random.randint(0, 600))
     return html_content.replace('</body>', butterfly_html + '</body>')
 
 @app.route('/')
