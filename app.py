@@ -22,7 +22,9 @@ app = Flask(__name__)
 
 def add_butterfly(html_content):
     butterfly_url = url_for('static', filename='images/buttefly.gif')
-    butterfly_html = '<img src="{}" style="position: absolute; left: {}px; top: {}px;">'.format(butterfly_url, random.randint(0, 800), random.randint(0, 600))
+    width = random.randint(20, 100)  # random width between 20px and 100px
+    height = width  # keep the aspect ratio
+    butterfly_html = '<img src="{}" style="position: absolute; left: {}px; top: {}px; width: {}px; height: {}px;">'.format(butterfly_url, random.randint(0, 800), random.randint(0, 600), width, height)
     return html_content.replace('</body>', butterfly_html + '</body>')
 
 @app.route('/')
