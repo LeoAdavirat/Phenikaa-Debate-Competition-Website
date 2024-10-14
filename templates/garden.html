@@ -7,10 +7,13 @@
             background-image: url({{ url_for('static', filename='images/garden_background.jpg') }});
             background-size: cover;
             background-repeat: no-repeat;
+            height: 100vh; /* Ensure the body takes full height */
+            margin: 0; /* Remove default margin */
         }
     </style>
 </head>
 <body>
     <!-- Add your garden content here -->
+    <h1>Welcome to the Garden</h1>
 </body>
 </html>
