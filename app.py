@@ -14,10 +14,11 @@ stage_number = client_socket.recv(1024).decode()
 
 @app.route("/")
 def index():
-    if stage_number == "1":
-        return render_template("garden.html")
-    else:
-        return "Invalid stage number"
+    return render_template("garden.html")
+    # if stage_number == "1":
+    #     return render_template("garden.html")
+    # else:
+    #     return "Invalid stage number"
 
 @app.route("/butterfly")
 def butterfly():

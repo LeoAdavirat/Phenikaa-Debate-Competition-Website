@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Garden</title>
     <style>
-      body {
-        background-image: url("/garden_background.jpg");
-        background-size: cover;
-      }
+        body {
+            background-image: url({{ url_for('static', filename='images/garden_background.jpg') }});
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
     </style>
-  </head>
-  <body>
-    <!-- Add a butterfly sprite image here -->
-  </body>
+</head>
+<body>
+    <!-- Add your garden content here -->
+</body>
 </html>
