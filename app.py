@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, send_from_directory
 import socket, random
 
 app = Flask(__name__)
@@ -19,41 +19,40 @@ app = Flask(__name__)
 #     #     return render_template("garden.html")
 #     # else:
 #     #     return "Invalid stage number"
-def add_butterfly(html_content):
-    butterfly_url = url_for('static', filename='images/buttefly.gif')
-    width = random.randint(20, 100)  # random width between 20px and 100px
-    height = width  # keep the aspect ratio
-    initial_x = random.randint(0, 800)  # initial x position
-    initial_y = 600  # initial y position at the bottom of the screen
-    butterfly_html = '<img id="butterfly" src="{}" style="position: absolute; left: {}px; top: {}px; width: {}px; height: {}px;">'.format(butterfly_url, initial_x, initial_y, width, height)
-    html_content = html_content.replace('</body>', butterfly_html + '</body>')
+# def add_butterfly(html_content):
+#     butterfly_url = url_for('static', filename='images/butterfly.gif')
+#     width = random.randint(50, 70)  # random width between 20px and 100px
+#     height = width  # keep the aspect ratio
+#     initial_x = random.randint(0, 800)  # initial x position
+#     initial_y = 600  # initial y position at the bottom of the screen
+#     butterfly_html = '<img id="butterfly" src="{}" style="position: absolute; left: {}px; top: {}px; width: {}px; height: {}px;">'.format(butterfly_url, initial_x, initial_y, width, height)
+#     html_content = html_content.replace('</body>', butterfly_html + '</body>')
 
-    # Add JavaScript code to make the butterfly fly up
-    script = '''
-        <script>
-            var butterfly = document.getElementById('butterfly');
-            var y = {};
-            var speed = 2;  // adjust the speed of the butterfly
-            function fly() {{
-                y -= speed;
-                butterfly.style.top = y + 'px';
-                if (y <= 0) {{
-                    // despawn the butterfly when it reaches the top of the screen
-                    butterfly.remove();
-                }} else {{
-                    setTimeout(fly, 16);  // 16ms = 60fps
-                }}
-            }}
-            fly();
-        </script>
-    '''.format(initial_y)
-    html_content += script
-    return html_content
+#     # Add JavaScript code to make the butterfly fly up
+#     script = '''
+#         <script>
+#             var butterfly = document.getElementById('butterfly');
+#             var y = {};
+#             var speed = 2;  // adjust the speed of the butterfly
+#             function fly() {{
+#                 y -= speed;
+#                 butterfly.style.top = y + 'px';
+#                 if (y <= 0) {{
+#                     // despawn the butterfly when it reaches the top of the screen
+#                     butterfly.remove();
+#                 }} else {{
+#                     setTimeout(fly, 16);  // 16ms = 60fps
+#                 }}
+#             }}
+#             fly();
+#         </script>
+#     '''.format(initial_y)
+#     html_content += script
+#     return html_content
 
 @app.route('/')
 def home():
     html_content = render_template('garden.html')
-    return add_butterfly(html_content)
-
+    return html_content
 if __name__ == "__main__":
     app.run(debug=True)
