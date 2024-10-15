@@ -84,10 +84,11 @@
         /* Remove background color toggle */
         /* Background image container */
         .body {
-            background: url({{ url_for('static', filename='images/garden_background.jpg') }}), no-repeat center center;
+            background: url('https://via.placeholder.com/800x600.png?text=Default+Background'), no-repeat center center;
             background-size: cover;
             transition: background-image 0.5s ease;
             color: white;
+            padding: 20px;
         }
 
         /* Adjust menu appearance */
@@ -100,13 +101,57 @@
             align-items: center;
         }
 
-        /* Optional styling for inner images */
+        /* Responsive image styling */
         .image-box img {
             width: 200px;
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
             transition: opacity 0.3s;
+        }
+
+        /* Make the switch and body responsive */
+        @media (max-width: 768px) {
+            .circle {
+                width: 6rem;
+                height: 6rem;
+            }
+
+            label, .toggle {
+                height: 2.2rem;
+            }
+
+            label {
+                margin: 1rem 0 2rem 0;
+            }
+
+            .names {
+                font-size: 80%;
+                margin-top: 5%;
+            }
+
+            .body {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .circle {
+                width: 4.5rem;
+                height: 4.5rem;
+            }
+
+            label, .toggle {
+                height: 1.8rem;
+            }
+
+            .names {
+                font-size: 70%;
+            }
+
+            .body {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -144,7 +189,8 @@
             </div>
 
             <div class="button-box mt-4">
-                <button class="image-button image-button-1" id="button1">Image 1</button>
+                <button class="image-button btn btn-primary" id="button1">Image 1</button>
+                <button class="image-button btn btn-danger" id="button2">Image 2</button>
             </div>
         </div>
     </div>
@@ -157,19 +203,23 @@
 <script>
     document.getElementById('switch').addEventListener('change', function () {
         const bodyElement = document.querySelector('.body');
-        const imgElement = document.getElementById('image-display');
         
         if (this.checked) {
-            // Switch to different background and image when toggle is active (checked)
+            // Switch to different background when toggle is active (checked)
             bodyElement.style.backgroundImage = "url('https://via.placeholder.com/800x600.png?text=Background+2')";
-            imgElement.src = "https://via.placeholder.com/200x200.png?text=Image+2";
-            imgElement.alt = "Image 2";
         } else {
-            // Switch back to the first background and image when toggle is inactive (unchecked)
+            // Switch back to the first background when toggle is inactive (unchecked)
             bodyElement.style.backgroundImage = "url('https://via.placeholder.com/800x600.png?text=Default+Background')";
-            imgElement.src = "https://via.placeholder.com/200x200.png?text=Image+1";
-            imgElement.alt = "Image 1";
         }
+    });
+
+    // Handling button click events to change the background
+    document.getElementById('button1').addEventListener('click', function () {
+        document.querySelector('.body').style.backgroundImage = "url('https://via.placeholder.com/800x600.png?text=Image+1')";
+    });
+
+    document.getElementById('button2').addEventListener('click', function () {
+        document.querySelector('.body').style.backgroundImage = "url('https://via.placeholder.com/800x600.png?text=Image+2')";
     });
 </script>
 
