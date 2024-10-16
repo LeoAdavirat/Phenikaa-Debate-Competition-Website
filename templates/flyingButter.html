@@ -14,7 +14,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-image: url('../static/images/1234.webp'); /* Add your background image URL */
+      background-image: url('../static/images/4102d3c6ba76749a51fb62d1117e20e0.gif'); /* Add your background image URL */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -58,8 +58,8 @@
       background: linear-gradient(
         to left,
         hsl(340, 68%, 12%) 0%,
-        hsl(340, 93%, 64%) 8%,
-        hsl(340, 62%, 53%) 92%,
+        hsl(118, 71%, 19%) 92%,
+        hsl(109, 48%, 41%) 8%,
         hsl(340deg 100% 16%) 100%
       );
     }
@@ -71,7 +71,7 @@
       border-radius: 12px;
       font-size: 1.1rem;
       color: white;
-      background: hsl(345, 83%, 75%);
+      background: hsl(310, 77%, 61%);
       will-change: transform;
       transform: translateY(-4px);
       transition: transform
@@ -113,10 +113,14 @@
 
     /* Modal styles */
     .modal-content {
-      background-color: white;
+      background-image: url('../static/images/your-modal-image.webp'); /* Add your modal background image URL */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       padding: 30px;
       border-radius: 10px;
       text-align: center;
+      color: rgb(0, 0, 0); /* Ensure text stands out on the image */
     }
 
     .modal-body p {
@@ -152,7 +156,7 @@
 </head>
 <body>
 
-  <button onclick="">
+  <button onclick="openModal()">
     <span class="shadow"></span>
     <span class="edge"></span>
     <span class="front text">Thả bướm</span>

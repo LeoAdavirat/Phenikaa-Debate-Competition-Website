@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizontal Sword Button</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    $darkGrey: #757576;
+
+    .l-container {
+      width: 400px;
+      height: 50px;
+      position: absolute;
+      left: 15%;
+      top: 50%;
+      transform: translateY(-50%); /* Center the sword horizontally */
+      transform: rotate(90deg); /* Rotate the sword to make it horizontal */
+    }
+
+    button {
+      border: none;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .l-sword {
+      height: 100%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .l-handle-orb {
+      width: 15px;
+      display: block;
+      margin: 0 auto;
+      position: relative;
+      top: 7px;
+      z-index: -1;
+
+      &:after {
+        content: ' ';
+        display: block;
+        position: relative;
+        width: 5px;
+        height: 5px;
+      }
+    }
+
+    .handle-orb {
+      color: #6572b6;
+
+      &:after {
+        border-radius: 20px;
+        border: 5px solid #6572b6;
+        background-color: #6572b6;
+      }
+    }
+
+    .l-handle-block {
+      width: 100%;
+      height: 20px;
+      display: block;
+      margin: 0 auto;
+      background-color: $darkGrey;
+    }
+
+    .l-small-handle-block {
+      width: 100%;
+      height: 10px;
+      display: block;
+      margin: 0 auto;
+      background-color: $darkGrey;
+    }
+
+    .handle-block {
+      color: $darkGrey;
+    }
+
+    .l-handle-block-curve {
+      position: absolute;
+      width: 75px;
+      left: -13px;
+      z-index: 1;
+      height: 3px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .l-large-handle-block-curve {
+      position: absolute;
+      width: 85px;
+      left: -18px;
+      z-index: 1;
+      height: 3px;
+      display: block;
+      margin: 0 auto;
+      
+      &:before {
+       content: '';
+       display: inline-block;
+       position: absolute;
+       top: -3px;
+       left: -3px;
+       width: 10px;
+       height: 10px;
+       border-radius: 7.5px;
+       background-color: $darkGrey;
+      }
+      
+      &:after {
+       content: '';
+       display: inline-block;
+       position: absolute;
+       top: -3px;
+       right: -3px;
+       width: 10px;
+       height: 10px;
+       border-radius: 7.5px;
+       background-color: $darkGrey;
+      }
+    }
+
+    .handle-block-curve {
+      background-color: $darkGrey;
+    }
+
+    .l-handle {
+      width: 60%;
+      height: 70px;
+      display: block;
+      margin: 0 auto;
+
+      &:after {
+        content: ' ';
+        display: block;
+        position: relative;
+        margin: 0 auto;
+      }
+    }
+
+    .handle {
+      background-image: repeating-linear-gradient(180deg, #a2a8ca 2px, $darkGrey 8px);
+    }
+
+    .l-blade {
+      height: 200px;
+      position: relative;
+    }
+
+    .l-blade-top {
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 10%;
+    }
+
+    .blade-top {
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid rgb(241, 241, 241);
+    }
+
+    .l-blade-left {
+      position: absolute;
+      top: 0;
+      left: 15%;
+      width: 35%;
+      height: 125%;
+      z-index: -1;
+    }
+
+    .l-blade-right {
+      position: absolute;
+      top: 0;
+      right: 15%;
+      width: 35%;
+      height: 125%;
+      z-index: -1;
+    }
+
+    .blade-left {
+      background-color: #e8e8e8;
+    }
+
+    .blade-right {
+      background-color: #cacaca;
+    }
+
+    .l-blade-bottom {
+      left: 14%;
+      top: 215px;
+      width: 0;
+      height: 0;
+      border: 18px solid transparent;
+      border-bottom-color: #e8e8e8;
+      position: relative;
+      
+      &:after {
+        content: '';
+        position: absolute;
+        left: -18px;
+        top: 18px;
+        width: 0;
+        height: 0;
+        border: 18px solid transparent;
+        border-top-color: #e8e8e8;
+      }
+    }
+
+    .twitter-section {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      
+      .fa-twitter-square {
+        color: $darkGrey;
+        font-size: 30px;
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translatey(0px);
+      }
+      50% {
+        transform: translatey(-20px);
+      }
+      100% {
+        transform: translatey(0px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="swordAction()">
+    <div class="l-container container">
+      <div class="l-sword">
+        <div class="l-handle-orb handle-orb"></div>
+        <div class="l-handle-block handle-block"></div>
+        <div class="l-handle-block-curve handle-block-curve"></div>
+        <div class="l-handle handle"></div>
+        <div class="l-small-handle-block handle-block"></div>
+        <div class="l-large-handle-block-curve handle-block-curve"></div>
+        <div class="l-blade">
+          <div class="l-blade-top blade-top"></div>
+          <div class="l-blade-left blade-left"></div>
+          <div class="l-blade-right blade-right"></div>
+          <div class="l-blade-bottom blade-bottom"></div>
+        </div>
+      </div>
+    </div>
+  </button>
+
+  <script>
+    function swordAction() {
+      alert("Sword button clicked!");
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
