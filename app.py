@@ -52,9 +52,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    html_content = render_template('garden.html')
-    html_content = render_template('ditconmesucvatmanhcayvcl.html')
-    html_content = render_template('butterflymydick.html')
+    # html_content = render_template('garden.html')
+    # html_content = render_template('triggerPopup.html')
+    html_content = render_template('flyingButter.html')
     return html_content
+
+@app.route('/popup')
+def popup():
+    # html_content = render_template('garden.html')
+    html_content = render_template('triggerPopup.html')
+    # html_content = render_template('flyingButter.html')
+    return html_content
+
 if __name__ == "__main__":
     app.run(debug=True)
