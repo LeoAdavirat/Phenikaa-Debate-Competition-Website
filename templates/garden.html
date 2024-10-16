@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Garden</title>
     <style>
-        body {
-            background-image: url({{ url_for('static', filename='images/garden_background.jpg') }});
-            background-size: cover;
-            background-repeat: no-repeat;
-            height: 100vh; /* Ensure the body takes full height */
-            margin: 0; /* Remove default margin */
-        }
+      body {
+    background-image: url({{url_for(
+        "static",
+        filename="images/garden_background.webp"
+    )}});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Ensure the body takes full height */
+    width: 100vw;  /* Ensure the body takes full width */
+    margin: 0; /* Remove default margin */
+    overflow: hidden; /* Hide overflow if any */
+}
+
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Add your garden content here -->
     <h1>Welcome to the Garden</h1>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
+  </body>
 </html>
