@@ -64,5 +64,12 @@ def popup():
     # html_content = render_template('flyingButter.html')
     return html_content
 
+@app.route('/presentation')
+def presentation():
+    return render_template('garden.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+
