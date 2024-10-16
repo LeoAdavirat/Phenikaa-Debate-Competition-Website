@@ -4,8 +4,8 @@ Follow these steps to get the Flask app running on a new Ubuntu server:
 
 1. **Clone the Repository**:
     ```sh
-    git clone https://github.com/yourusername/your-repo-name.git
-    cd your-repo-name
+    https://github.com/LeoAdavirat/Phenikaa-Debate-Competition-Website.git
+    cd Phenikaa-Debate-Competition-Website
     ```
 
 2. **Update the Package List**:
@@ -20,13 +20,7 @@ Follow these steps to get the Flask app running on a new Ubuntu server:
 
 4. **Create and Activate Virtual Environment**:
     ```sh
-    python3 -m venv linuxenv
     source linuxenv/bin/activate
-    ```
-
-5. **Install Requirements**:
-    ```sh
-    pip install -r requirements.txt
     ```
 
 6. **Run the Flask App**:
