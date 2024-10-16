@@ -53,6 +53,8 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     html_content = render_template('garden.html')
+    html_content = render_template('ditconmesucvatmanhcayvcl.html')
+    html_content = render_template('butterflymydick.html')
     return html_content
 if __name__ == "__main__":
     app.run(debug=True)
