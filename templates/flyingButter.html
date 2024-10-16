@@ -57,9 +57,9 @@
       border-radius: 12px;
       background: linear-gradient(
         to left,
-        hsl(340deg 100% 16%) 0%,
-        hsl(340deg 100% 32%) 8%,
-        hsl(340deg 100% 32%) 92%,
+        hsl(340, 68%, 12%) 0%,
+        hsl(340, 93%, 64%) 8%,
+        hsl(340, 62%, 53%) 92%,
         hsl(340deg 100% 16%) 100%
       );
     }
@@ -71,7 +71,7 @@
       border-radius: 12px;
       font-size: 1.1rem;
       color: white;
-      background: hsl(345deg 100% 47%);
+      background: hsl(345, 83%, 75%);
       will-change: transform;
       transform: translateY(-4px);
       transition: transform
@@ -110,15 +110,52 @@
     button:focus:not(:focus-visible) {
       outline: none;
     }
+
+    /* Modal styles */
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .modal-body p {
+      font-size: 20px;
+    }
+
+    .modal-body .btn {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    #myModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Position button at the bottom center */
+    .button-container {
+      position: absolute;
+      bottom: 20px; /* Adjust the distance from the bottom */
+      left: 50%;
+      transform: translateX(-50%);
+    }
   </style>
 </head>
 <body>
 
-  <button>
+  <button onclick="">
     <span class="shadow"></span>
     <span class="edge"></span>
-    <span class="front text"> Click me
-    </span>
+    <span class="front text">Thả bướm</span>
   </button>
 
   <!-- Modal Structure -->
@@ -126,9 +163,9 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
-          <p>What will you do?</p>
-          <button class="btn btn-success" onclick="closeModal()">Yes</button>
-          <button class="btn btn-danger" onclick="closeModal()">No</button>
+          <p>Có một con quái vật xuất hiện trong khu vườn!</p>
+          <p>Bạn có muốn tiêu diệt nó không?</p>
+          <button class="btn btn-danger" onclick="closeModal()">Sẵn sàng!</button>
         </div>
       </div>
     </div>
@@ -140,10 +177,9 @@
       document.getElementById('myModal').style.display = 'flex';
     }
 
-    // Close the modal and reset the trigger
+    // Close the modal
     function closeModal() {
       document.getElementById('myModal').style.display = 'none';
-      localStorage.removeItem('triggerPopup');
     }
 
     // Check for trigger when page loads
