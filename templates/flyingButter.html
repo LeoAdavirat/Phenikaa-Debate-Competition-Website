@@ -57,10 +57,10 @@
       border-radius: 12px;
       background: linear-gradient(
         to left,
-        hsl(340, 68%, 12%) 0%,
-        hsl(118, 71%, 19%) 92%,
-        hsl(109, 48%, 41%) 8%,
-        hsl(340deg 100% 16%) 100%
+          hsl(125, 86%, 11%) 0%,
+        hsl(110, 52%, 17%) 8%,
+        hsl(118, 71%, 42%) 92%,
+        hsl(126, 88%, 6%) 100%
       );
     }
     
@@ -71,7 +71,7 @@
       border-radius: 12px;
       font-size: 1.1rem;
       color: white;
-      background: hsl(310, 77%, 61%);
+      background: hsl(116, 66%, 41%);
       will-change: transform;
       transform: translateY(-4px);
       transition: transform
@@ -113,14 +113,14 @@
 
     /* Modal styles */
     .modal-content {
-      background-image: url('../static/images/your-modal-image.webp'); /* Add your modal background image URL */
+      background-image: url('../static/images/1234.webp'); /* Add your modal background image URL */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       padding: 30px;
       border-radius: 10px;
       text-align: center;
-      color: rgb(0, 0, 0); /* Ensure text stands out on the image */
+      color: rgb(246, 239, 239); /* Ensure text stands out on the image */
     }
 
     .modal-body p {
@@ -156,7 +156,7 @@
 </head>
 <body>
 
-  <button onclick="">
+  <button onclick="openModal()">
     <span class="shadow"></span>
     <span class="edge"></span>
     <span class="front text">Thả bướm</span>
@@ -180,12 +180,12 @@
     function openModal() {
       document.getElementById('myModal').style.display = 'flex';
     }
-
+  
     // Close the modal
     function closeModal() {
       document.getElementById('myModal').style.display = 'none';
     }
-
+  
     // Check for trigger when page loads
     window.onload = function() {
       const triggerPopup = localStorage.getItem('triggerPopup');
@@ -193,6 +193,40 @@
         openModal();
       }
     };
+  
+    // Function to send POST request to the server
+    function sendPostRequest(data) {
+      fetch('https://yourserver.com/api/endpoint', {  // Replace with your server URL
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',  // Tell the server you're sending JSON
+        },
+        body: JSON.stringify(data),  // Convert your data object to JSON string
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();  // Parse the JSON response
+      })
+      .then(data => {
+        console.log('Success:', data);
+        // Handle the response here
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  
+    // Example usage:
+    const myData = {
+      key1: 'value1',
+      key2: 'value2',
+    };
+  
+    // Call sendPostRequest with your data object
+    sendPostRequest(myData);
+  
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
