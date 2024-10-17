@@ -14,7 +14,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-image: url('../static/images/4102d3c6ba76749a51fb62d1117e20e0.gif'); /* Add your background image URL */
+      background-image: url('../static/images/4102d3c6ba76749a51fb62d1117e20e0.gif');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -30,7 +30,7 @@
       transition: filter 250ms;
       user-select: none;
       touch-action: manipulation;
-      margin-top: 300px; /* Move the button 50px down */
+      margin-top: 300px;
     }
     
     .shadow {
@@ -43,9 +43,7 @@
       background: hsl(0deg 0% 0% / 0.25);
       will-change: transform;
       transform: translateY(2px);
-      transition: transform
-        600ms
-        cubic-bezier(.3, .7, .4, 1);
+      transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
     }
     
     .edge {
@@ -55,13 +53,7 @@
       width: 100%;
       height: 100%;
       border-radius: 12px;
-      background: linear-gradient(
-        to left,
-          hsl(125, 86%, 11%) 0%,
-        hsl(110, 52%, 17%) 8%,
-        hsl(118, 71%, 42%) 92%,
-        hsl(126, 88%, 6%) 100%
-      );
+      background: linear-gradient(to left, hsl(125, 86%, 11%) 0%, hsl(110, 52%, 17%) 8%, hsl(118, 71%, 42%) 92%, hsl(126, 88%, 6%) 100%);
     }
     
     .front {
@@ -74,9 +66,7 @@
       background: hsl(116, 66%, 41%);
       will-change: transform;
       transform: translateY(-4px);
-      transition: transform
-        600ms
-        cubic-bezier(.3, .7, .4, 1);
+      transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
     }
     
     button:hover {
@@ -85,9 +75,7 @@
     
     button:hover .front {
       transform: translateY(-6px);
-      transition: transform
-        250ms
-        cubic-bezier(.3, .7, .4, 1.5);
+      transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
     }
     
     button:active .front {
@@ -97,9 +85,7 @@
     
     button:hover .shadow {
       transform: translateY(4px);
-      transition: transform
-        250ms
-        cubic-bezier(.3, .7, .4, 1.5);
+      transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
     }
     
     button:active .shadow {
@@ -113,14 +99,14 @@
 
     /* Modal styles */
     .modal-content {
-      background-image: url('../static/images/1234.webp'); /* Add your modal background image URL */
+      background-image: url('../static/images/1234.webp');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       padding: 30px;
       border-radius: 10px;
       text-align: center;
-      color: rgb(0, 0, 0); /* Ensure text stands out on the image */
+      color: rgb(0, 0, 0);
     }
 
     .modal-body p {
@@ -148,7 +134,7 @@
     /* Position button at the bottom center */
     .button-container {
       position: absolute;
-      bottom: 20px; /* Adjust the distance from the bottom */
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -167,7 +153,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
-          <p>Có một con quái vật xuất hiện trong khu vườn!</p>
+          <p id="monsterMessage">Có một con quái vật xuất hiện trong khu vườn!</p>
           <p>Bạn có muốn tiêu diệt nó không?</p>
           <button class="btn btn-danger" onclick="closeModal()">Sẵn sàng!</button>
         </div>
@@ -177,7 +163,8 @@
 
   <script>
     // Open the modal
-    function openModal() {
+    function openModal(message = "Có một con quái vật xuất hiện trong khu vườn!") {
+      document.getElementById('monsterMessage').textContent = message;
       document.getElementById('myModal').style.display = 'flex';
     }
 
@@ -186,12 +173,21 @@
       document.getElementById('myModal').style.display = 'none';
     }
 
-    // Check for trigger when page loads
+    // Function to check the server for the monster event
+    function checkForMonsterTrigger() {
+      fetch('/sendMonster')
+        .then(response => response.json())
+        .then(data => {
+          if (data.action === 'trigger_monster') {
+            openModal(data.message);  // Open modal with message from server
+          }
+        })
+        .catch(error => console.error('Error fetching monster data:', error));
+    }
+
+    // Automatically check for the monster event on page load
     window.onload = function() {
-      const triggerPopup = localStorage.getItem('triggerPopup');
-      if (triggerPopup === 'true') {
-        openModal();
-      }
+      checkForMonsterTrigger();
     };
   </script>
 

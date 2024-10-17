@@ -1,3 +1,4 @@
+<!-- main.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,25 +33,16 @@
 </head>
 <body>
 
-  <!-- Button to trigger the popup in flyingButter.html -->
+  <!-- Button to trigger the popup in butterfly.html -->
   <button class="open-popup-btn" onclick="triggerButterflyPopup()">Trigger Butterfly Popup</button>
 
   <script>
-    // Function to trigger the butterfly popup via server request
+    // Function to trigger the popup in butterfly.html
     function triggerButterflyPopup() {
-      // Send a GET request to the Flask server
-      fetch('/whatdoyoudo')
-        .then(response => response.json())  // Parse JSON response
-        .then(data => {
-          console.log(data.answer);  // Handle the server response
-
-          // Set a flag in localStorage to trigger popup in flyingButter.html
-          localStorage.setItem('triggerPopup', 'true');
-
-          // Open flyingButter.html in a new tab or window
-          window.open('/flyingButter.html', '_blank');
-        })
-        .catch(error => console.error('Error:', error));
+      // Set a flag in localStorage to signal butterfly.html to show the modal
+      localStorage.setItem('triggerPopup', 'true');
+      // Open butterfly.html in a new tab or window
+      window.open('/', '_blank');
     }
   </script>
 
