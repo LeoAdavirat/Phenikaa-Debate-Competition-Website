@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, send_from_directory, request, jsonify
-import socket, random
+import socket, random, requests
 
 app = Flask(__name__)
 
@@ -64,6 +64,26 @@ def popup():
     # html_content = render_template('flyingButter.html')
     return html_content
 
+monster_state = "Monster idle!"
+def switchValue():
+    global monster_state
+    monster_state = "Monster triggered!" if monster_state == "Monster idle!" else "Monster idle!"
+
+
+@app.route('/sendMonster', methods=['POST'])
+def send_monster():
+    data = request.json
+    if data['message'] == 'triggerButterflyPopup':
+        switchValue()
+        return jsonify(success=True, message=f"Monster state changed to {monster_state.lower()}")
+    else:
+        return jsonify(success=False, message="Invalid trigger")
+
+@app.route('/triggerMonster', methods=['GET'])
+def trigger_monster():
+    global monster_state
+    return jsonify(message=monster_state)
+
 @app.route('/presentation')
 def presentation():
     return render_template('garden.html')
@@ -84,6 +104,18 @@ def update_stage():
 def get_stage():
     return jsonify(stage=stage)
 
+count = 0
+
+def save_count_to_file():
+    with open("count.txt", "w") as file:
+        file.write(str(count))
+
+@app.route('/countOne', methods=['POST'])
+def count_one():
+    global count
+    count += 1
+    save_count_to_file()
+    return jsonify(success=True, message=f"Count incremented to {count}")
 
 if __name__ == "__main__":
     app.run(debug=True)
