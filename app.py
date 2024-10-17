@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, send_from_directory
+from flask import Flask, render_template, url_for, send_from_directory, request, jsonify
 import socket, random
 
 app = Flask(__name__)
@@ -67,6 +67,22 @@ def popup():
 @app.route('/presentation')
 def presentation():
     return render_template('garden.html')
+
+
+stage = 1
+@app.route('/setstage')
+def setstage():
+    return render_template('setstage.html', stage=stage)
+
+@app.route('/update_stage', methods=['POST'])
+def update_stage():
+    global stage
+    stage = request.json['stage']
+    return jsonify(success=True)
+
+@app.route('/get_stage', methods=['GET'])
+def get_stage():
+    return jsonify(stage=stage)
 
 
 if __name__ == "__main__":
