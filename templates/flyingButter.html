@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viện Đào tạo Quốc tế</title>
+  <title>Butterfly Button</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     /* Full-page background */
@@ -120,7 +120,7 @@
       padding: 30px;
       border-radius: 10px;
       text-align: center;
-      color: rgb(246, 239, 239); /* Ensure text stands out on the image */
+      color: rgb(0, 0, 0); /* Ensure text stands out on the image */
     }
 
     .modal-body p {
@@ -156,7 +156,7 @@
 </head>
 <body>
 
-  <button onclick="openModal()">
+  <button onclick="">
     <span class="shadow"></span>
     <span class="edge"></span>
     <span class="front text">Thả bướm</span>
@@ -180,12 +180,12 @@
     function openModal() {
       document.getElementById('myModal').style.display = 'flex';
     }
-  
+
     // Close the modal
     function closeModal() {
       document.getElementById('myModal').style.display = 'none';
     }
-  
+
     // Check for trigger when page loads
     window.onload = function() {
       const triggerPopup = localStorage.getItem('triggerPopup');
@@ -193,40 +193,6 @@
         openModal();
       }
     };
-  
-    // Function to send POST request to the server
-    function sendPostRequest(data) {
-      fetch('https://yourserver.com/api/endpoint', {  // Replace with your server URL
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',  // Tell the server you're sending JSON
-        },
-        body: JSON.stringify(data),  // Convert your data object to JSON string
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();  // Parse the JSON response
-      })
-      .then(data => {
-        console.log('Success:', data);
-        // Handle the response here
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    }
-  
-    // Example usage:
-    const myData = {
-      key1: 'value1',
-      key2: 'value2',
-    };
-  
-    // Call sendPostRequest with your data object
-    sendPostRequest(myData);
-  
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
