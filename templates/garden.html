@@ -25,12 +25,34 @@
         max-height: 100%;
         display: none; /* Initially hidden */
       }
+      .explosion {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        animation: explode 1s forwards;
+      }
+
+      @keyframes explode {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
     </style>
   </head>
   <body>
     <!-- Add your garden content here -->
     <!-- <h1>Welcome to the Garden</h1> -->
-    <img id="centeredImage" src="{{ url_for('static', filename='images/qart.png') }}" alt="Centered Image">
+    <img
+      id="centeredImage"
+      src="{{ url_for('static', filename='images/qart.png') }}"
+      alt="Centered Image"
+    />
 
     <script
       type="module"
