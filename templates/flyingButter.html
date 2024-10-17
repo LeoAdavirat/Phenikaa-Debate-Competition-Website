@@ -99,14 +99,15 @@
 
     /* Modal styles */
     .modal-content {
-      background-image: url('../static/images/1234.webp');
+      background-image: url('../static/images/download.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       padding: 30px;
       border-radius: 10px;
       text-align: center;
-      color: rgb(0, 0, 0);
+      -webkit-text-stroke: 0.4px black;
+      color: rgb(255, 255, 255);
     }
 
     .modal-body p {
@@ -142,7 +143,7 @@
 </head>
 <body>
 
-  <button onclick="">
+  <button onclick="openModal()">
     <span class="shadow"></span>
     <span class="edge"></span>
     <span class="front text">Thả bướm</span>
@@ -155,7 +156,7 @@
         <div class="modal-body">
           <p id="monsterMessage">Có một con quái vật xuất hiện trong khu vườn!</p>
           <p>Bạn có muốn tiêu diệt nó không?</p>
-          <button class="btn btn-danger" onclick="closeModal()">Sẵn sàng!</button>
+          <button class="btn btn-info" onclick="closeModal()">Sẵn sàng!</button>
         </div>
       </div>
     </div>
